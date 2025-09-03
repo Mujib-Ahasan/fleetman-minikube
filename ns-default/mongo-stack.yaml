@@ -16,6 +16,10 @@ spec:
       containers:
         - name: mongodb
           image: mongo:3.6.5-jessie
+          resources:
+            requests: 
+              memory: 400Mi
+              cpu: 500m
           volumeMounts:
           - name: mongo-persistent-storage
             mountPath: /data/db    # this is the path inside the container we wanna mount outside.
