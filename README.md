@@ -18,7 +18,7 @@ Fleetman is optimized to run on Kubernetes clusters (This repo only talks about 
 - Start the minikube-tunnel by:
    `minikube service fleetman-webapp` <br>
 Checkout the yaml set to know more about it: [ns-default](https://github.com/Mujib-Ahasan/fleetman-minikube/tree/main/ns-default)
-
+- Do enable this addon: `minikube addons enable metrics-server`. </br> Wait few moment and see last minute average cpu and memory usage: `kubectl top pod`
 ## Testing on local machine
     git clone https://github.com/Mujib-Ahasan/fleetman-minikube.git
     cd fleetman-minikube/ns-default 
@@ -41,3 +41,8 @@ The api-gateway call the api and collect the data and sends it to webapp fronten
 but incase if this dies may cause a brutal logical failure. So configuring database and mount the data path into local machine (here minikube) would be a better idea. I didnot get a chance to
 meet the developer and talk about the insights, but the whole project and components are clear to me! And the rest is the section which I did in this project. 
     
+## Ingress
+In this repo, a directory ingress is there. Inside that ingress.yaml is used to set routing rules. 
+Before that enable the addon: `minikube addons enable ingress`. Then apply the ingress.yaml file.
+Check the namespace `ingress-nginx`. Edit /etc/hosts file and add your domain for local testing (for wondows hosts file path: \Windows\System32\drivers\etc\hosts). 
+Go to your browser and type your domain, now should be able to see web page.
